@@ -2,11 +2,11 @@ from flask import Flask, request, jsonify
 import google.generativeai as genai
 from flask_cors import CORS
 
-app = Flask(__name__)
+app = Flask(__name__) 
 CORS(app)
 
 # Replace with your actual Gemini API key
-genai.configure(api_key="AIzaSyATzijRklaA3ChnN0adidnq1FQ9R7JxVvo")
+genai.configure(api_key="GOOGLE_API_KEY")
 
 model = genai.GenerativeModel("gemini-1.5-flash")
 
@@ -46,5 +46,5 @@ def chat():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=False, host="0.0.0.0", port=10000)
